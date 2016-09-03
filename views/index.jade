@@ -1,0 +1,17 @@
+extends layout
+
+block extraHeader
+  script(type='text/javascript').
+    g_lastCaptured = '#{lastCaptured}';
+    setInterval(refreshCurrentImage, 1000);
+    
+
+block content
+  h1 Picu&Bola Monitoring
+  p This image is refreshed each second
+  div
+    img(id='img_current_picture' src='/pics/current.png')    
+
+  h3 Last captured images
+  div(id='last_captured')
+    

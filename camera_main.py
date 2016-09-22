@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from picamera import PiCamera
+#from picamera import PiCamera
 from SimpleCV import *
 from datetime import datetime
 
@@ -13,14 +13,16 @@ maxMean = 0
 #cam = Camera(prop_set={'width': 1024, 'height': 768})
 cam = Camera()
 
-display = Display((1024, 768))
+#display = Display((1024, 768))
 
 try:
     while True:
-        display.checkEvents()
+        #display.checkEvents()
 
         # grabs original image to be used when motion is detected
         original = cam.getImage()
+        timestamp = datetime.now().strftime("%a, %b, %-d %Y %H:%M:%S")
+        original.drawText(timestamp, 10, 10, color=Color.ORANGE, fontsize=20)
         
         # takes two shots in sequence (we will compare them to detect motion)        
         img01 = cam.getImage().toGray()
